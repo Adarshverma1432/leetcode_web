@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSA Leetcode</title>
+    <style>
+        /* NAVBAR */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 90px;
+    background: #020617; /* added for better look */
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: 700;
+    color: #38bdf8;
+}
+
+.nav-links a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: white;
+    opacity: 0.8;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    opacity: 1;
+    color: #38bdf8;
+}
+
+        /* ////////////////// */
+        body {
+    margin: 0;
+    font-family: Arial;
+    background: #0b1a2f;
+    color: white;
+}
+
+.container {
+    max-width: 950px;
+    margin: auto;
+    padding: 30px;
+}
+
+h1 {
+    text-align: center;
+    color: #38bdf8;
+}
+
+.box {
+    background: #1e293b;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 10px;
+}
+
+/* Diagram */
+.diagram {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.cell {
+    width: 60px;
+    height: 60px;
+    background: #38bdf8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+/* Matrix */
+.matrix {
+    display: grid;
+    grid-template-columns: repeat(3,60px);
+    gap: 10px;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+/* Code */
+.code {
+    background: #020617;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 14px;
+}
+
+/* /////////////////////// */
+/* 🔥 TOPIC BOXES */
+.topic-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 15px;
+    padding: 20px 60px;
+}
+
+.topic-box {
+    background: #1e293b;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
+    transition: 0.3s;
+    box-shadow: 0 0 8px rgba(56,189,248,0.2);
+}
+
+.topic-box:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 0 15px rgba(56,189,248,0.8);
+}
+
+.topic-box span {
+    display: block;
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+    </style>
+</head>
+<body>
+    <!-- NAVBAR -->
+<div class="navbar">
+    <div class="logo">CodeJourney!</div>
+
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="index.html#ques">Problems</a>
+        <a href="contact.html">Contact</a>
+    </div>
+</div>
+
+<!-- //////////////////////////0 -->
+ <!-- 🔥 TOPIC BOXES -->
+<div class="topic-container">
+
+    <a href="#arrays" class="topic-box">
+        <span>📘</span>
+        Arrays
+    </a>
+
+    <a href="#strings" class="topic-box">
+        <span>🔤</span>
+        Strings
+    </a>
+
+    <a href="#trees" class="topic-box">
+        <span>🌳</span>
+        Trees
+    </a>
+
+    <a href="#hashing" class="topic-box">
+        <span>🔑</span>
+        Hashing
+    </a>
+
+    <a href="#dp" class="topic-box">
+        <span>🧠</span>
+        DP
+    </a>
+
+</div>
+<!-- ????????????///////////////////////////// -->
+
+
+<div class="container">
+
+<h1 id="arrays">📘 Arrays Complete Guide</h1>
+
+<!-- INTRO -->
+<div class="box">
+<h3>📌 What is Array?</h3>
+<p>
+Array ek linear data structure hai jisme elements **continuous memory** me store hote hain.
+Isliye hum kisi bhi element ko direct index se access kar sakte hain.
+</p>
+
+<div class="diagram">
+<div class="cell">10</div>
+<div class="cell">20</div>
+<div class="cell">30</div>
+<div class="cell">40</div>
+</div>
+
+<p style="text-align:center;">Index → 0 | 1 | 2 | 3</p>
+</div>
+
+<!-- TYPES -->
+<div class="box">
+<h3>📌 Types of Arrays</h3>
+
+<p><b>1. 1D Array</b></p>
+<div class="diagram">
+<div class="cell">1</div>
+<div class="cell">2</div>
+<div class="cell">3</div>
+</div>
+
+<p><b>2. 2D Array (Matrix)</b></p>
+<div class="matrix">
+<div class="cell">1</div><div class="cell">2</div><div class="cell">3</div>
+<div class="cell">4</div><div class="cell">5</div><div class="cell">6</div>
+<div class="cell">7</div><div class="cell">8</div><div class="cell">9</div>
+</div>
+
+<p><b>3. Dynamic Array</b> → ArrayList (size change hota hai)</p>
+</div>
+
+<!-- MEMORY -->
+<div class="box">
+<h3>📌 Memory Representation</h3>
+<p>
+Har element ka address calculate hota hai:
+</p>
+<p><b>Address = Base + (Index × Size)</b></p>
+
+<p>
+Is wajah se arrays fast hote hain.
+</p>
+</div>
+
+<!-- OPERATIONS -->
+<div class="box">
+<h3>📌 Operations</h3>
+
+<p><b>1. Traversal</b> → sab elements visit karna</p>
+<p><b>2. Searching</b> → element find karna</p>
+<p><b>3. Insertion</b> → beech me add (shift hota hai)</p>
+<p><b>4. Deletion</b> → remove (shift hota hai)</p>
+
+</div>
+
+<!-- COMPLEXITY -->
+<div class="box">
+<h3>📌 Time Complexity</h3>
+<ul>
+<li>Access → O(1)</li>
+<li>Search → O(n)</li>
+<li>Insert → O(n)</li>
+<li>Delete → O(n)</li>
+</ul>
+</div>
+
+<!-- PATTERNS -->
+<div class="box">
+<h3>📌 Important Patterns 🔥</h3>
+
+<p><b>1. Two Pointer</b></p>
+<p>Sorted array me use hota hai</p>
+
+<p><b>2. Sliding Window</b></p>
+<p>Subarray problems ke liye</p>
+
+<p><b>3. Prefix Sum</b></p>
+<p>Fast sum calculation</p>
+
+<p><b>4. Kadane's Algorithm</b></p>
+<p>Maximum subarray sum</p>
+
+</div>
+
+<!-- TWO POINTER DIAGRAM -->
+<div class="box">
+<h3>📌 Two Pointer Visual</h3>
+
+<div class="diagram">
+<div class="cell">1</div>
+<div class="cell">2</div>
+<div class="cell">3</div>
+<div class="cell">4</div>
+<div class="cell">5</div>
+</div>
+
+<p style="text-align:center;">i → start &nbsp;&nbsp; j → end</p>
+</div>
+
+<!-- SLIDING WINDOW -->
+<div class="box">
+<h3>📌 Sliding Window Concept</h3>
+
+<div class="diagram">
+<div class="cell">2</div>
+<div class="cell">3</div>
+<div class="cell">5</div>
+<div class="cell">1</div>
+<div class="cell">6</div>
+</div>
+
+<p style="text-align:center;">Window moves → → →</p>
+</div>
+
+<!-- PREFIX SUM -->
+<div class="box">
+<h3>📌 Prefix Sum</h3>
+
+<p>Array: [1,2,3,4]</p>
+<p>Prefix: [1,3,6,10]</p>
+
+</div>
+
+<!-- CODE -->
+<div class="box">
+<h3>💻 Basic Code</h3>
+
+<div class="code">
+int[] arr = {1,2,3};
+
+for(int i=0;i<arr.length;i++){
+ System.out.println(arr[i]);
+}
+</div>
+</div>
+
+<!-- QUESTIONS -->
+<div class="box">
+<h3>🎯 Important Questions</h3>
+
+<ul>
+<li>Contains Duplicate</li>
+<li>Two Sum</li>
+<li>Maximum Subarray</li>
+<li>Product of Array Except Self</li>
+</ul>
+
+</div>
+
+</div>
+
+<!-- //////////////////// -->
+ <!-- STRINGS SECTION -->
+<div id="strings" class="container">
+
+<h1>🔤 Strings Complete Guide</h1>
+
+<!-- INTRO -->
+<div class="box">
+<h3>📌 What is String?</h3>
+<p>
+String ek sequence hota hai characters ka (letters, digits, symbols).
+Example: "hello", "abc123"
+</p>
+
+<div class="diagram">
+<div class="cell">h</div>
+<div class="cell">e</div>
+<div class="cell">l</div>
+<div class="cell">l</div>
+<div class="cell">o</div>
+</div>
+
+<p style="text-align:center;">Index → 0 | 1 | 2 | 3 | 4</p>
+</div>
+
+<!-- TYPES -->
+<div class="box">
+<h3>📌 Types of Strings</h3>
+
+<p><b>1. Immutable String</b></p>
+<p>Java me String change nahi hota (new object banega)</p>
+
+<p><b>2. Mutable String</b></p>
+<p>StringBuilder / StringBuffer use karke change kar sakte ho</p>
+
+</div>
+
+<!-- MEMORY -->
+<div class="box">
+<h3>📌 Memory Concept</h3>
+<p>
+String bhi internally array of characters hota hai.
+</p>
+<p><b>"hello" → ['h','e','l','l','o']</b></p>
+</div>
+
+<!-- OPERATIONS -->
+<div class="box">
+<h3>📌 Common Operations</h3>
+
+<p><b>1. Traversal</b> → har character dekhna</p>
+<p><b>2. Reverse</b> → string ulta karna</p>
+<p><b>3. Compare</b> → do strings compare karna</p>
+<p><b>4. Substring</b> → part nikalna</p>
+
+</div>
+
+<!-- COMPLEXITY -->
+<div class="box">
+<h3>📌 Time Complexity</h3>
+<ul>
+<li>Access → O(n)</li>
+<li>Traversal → O(n)</li>
+<li>Substring → O(n)</li>
+</ul>
+</div>
+
+<!-- PATTERNS -->
+<div class="box">
+<h3>📌 Important Patterns 🔥</h3>
+
+<p><b>1. Two Pointer</b></p>
+<p>Palindrome check me use hota hai</p>
+
+<p><b>2. Sliding Window</b></p>
+<p>Longest substring problems</p>
+
+<p><b>3. Hashing</b></p>
+<p>Frequency count / anagram</p>
+
+</div>
+
+<!-- PALINDROME -->
+<div class="box">
+<h3>📌 Palindrome Concept</h3>
+
+<div class="diagram">
+<div class="cell">m</div>
+<div class="cell">a</div>
+<div class="cell">d</div>
+<div class="cell">a</div>
+<div class="cell">m</div>
+</div>
+
+<p style="text-align:center;">Same forward & backward</p>
+</div>
+
+<!-- SLIDING WINDOW -->
+<div class="box">
+<h3>📌 Sliding Window (Strings)</h3>
+
+<div class="diagram">
+<div class="cell">a</div>
+<div class="cell">b</div>
+<div class="cell">c</div>
+<div class="cell">a</div>
+<div class="cell">b</div>
+</div>
+
+<p style="text-align:center;">Window moves → → →</p>
+</div>
+
+<!-- COMMON METHODS -->
+<div class="box">
+<h3>📌 Useful Functions (Java)</h3>
+
+<ul>
+<li>length()</li>
+<li>charAt(i)</li>
+<li>substring()</li>
+<li>equals()</li>
+<li>toLowerCase()</li>
+</ul>
+
+</div>
+
+<!-- CODE -->
+<div class="box">
+<h3>💻 Basic Code</h3>
+
+<div class="code">
+String s = "hello";
+
+for(int i=0;i<s.length();i++){
+ System.out.println(s.charAt(i));
+}
+</div>
+</div>
+
+<!-- QUESTIONS -->
+<div class="box">
+<h3>🎯 Important Questions</h3>
+
+<ul>
+<li>Valid Palindrome</li>
+<li>Longest Substring Without Repeating</li>
+<li>Anagram Check</li>
+<li>Reverse String</li>
+</ul>
+
+</div>
+
+</div>
+
+<!-- treee      ----------------------- -->
+ <!-- TREES SECTION -->
+<div id="trees" class="container">
+
+<h1>🌳 Trees Complete Guide</h1>
+
+<!-- INTRO -->
+<div class="box">
+<h3>📌 What is Tree?</h3>
+<p>
+Tree ek hierarchical data structure hai jisme nodes parent-child relation me connected hote hain.
+Top node ko root kehte hain.
+</p>
+
+<!-- SIMPLE TREE DIAGRAM -->
+<div style="text-align:center; margin-top:20px;">
+        1
+       / \
+      2   3
+     / \
+    4   5
+</div>
+
+<p style="text-align:center;">Root → 1</p>
+</div>
+
+<!-- TERMINOLOGY -->
+<div class="box">
+<h3>📌 Important Terms</h3>
+
+<ul>
+<li>Root → sabse upar node</li>
+<li>Parent → jiske niche child ho</li>
+<li>Child → jo parent ke niche ho</li>
+<li>Leaf → jiske koi child na ho</li>
+<li>Height → max depth</li>
+</ul>
+
+</div>
+
+<!-- TYPES -->
+<div class="box">
+<h3>📌 Types of Trees</h3>
+
+<p><b>1. Binary Tree</b></p>
+<p>Har node ke max 2 children hote hain</p>
+
+<p><b>2. Binary Search Tree (BST)</b></p>
+<p>Left < Root < Right</p>
+
+<p><b>3. Balanced Tree</b></p>
+<p>Height minimum hoti hai</p>
+
+</div>
+
+<!-- BINARY TREE DIAGRAM -->
+<div class="box">
+<h3>📌 Binary Tree</h3>
+
+<div style="text-align:center;">
+        10
+       /  \
+      5    15
+</div>
+
+</div>
+
+<!-- BST DIAGRAM -->
+<div class="box">
+<h3>📌 Binary Search Tree (BST)</h3>
+
+<div style="text-align:center;">
+        10
+       /  \
+      5    20
+     / \
+    2   7
+</div>
+
+<p style="text-align:center;">Left < Root < Right</p>
+
+</div>
+
+<!-- TRAVERSALS -->
+<div class="box">
+<h3>📌 Tree Traversals 🔥</h3>
+
+<p><b>1. Inorder (Left → Root → Right)</b></p>
+<p><b>2. Preorder (Root → Left → Right)</b></p>
+<p><b>3. Postorder (Left → Right → Root)</b></p>
+
+</div>
+
+<!-- VISUAL TRAVERSAL -->
+<div class="box">
+<h3>📌 Traversal Example</h3>
+
+<div style="text-align:center;">
+        1
+       / \
+      2   3
+</div>
+
+<p>Inorder → 2,1,3</p>
+<p>Preorder → 1,2,3</p>
+<p>Postorder → 2,3,1</p>
+
+</div>
+
+<!-- COMPLEXITY -->
+<div class="box">
+<h3>📌 Time Complexity</h3>
+
+<ul>
+<li>Traversal → O(n)</li>
+<li>Search (BST) → O(log n)</li>
+<li>Insert → O(log n)</li>
+</ul>
+
+</div>
+
+<!-- PATTERNS -->
+<div class="box">
+<h3>📌 Important Patterns 🔥</h3>
+
+<p><b>1. DFS (Depth First Search)</b></p>
+<p>Deep jao → recursion use hota hai</p>
+
+<p><b>2. BFS (Level Order)</b></p>
+<p>Level by level traversal</p>
+
+</div>
+
+<!-- DFS VS BFS -->
+<div class="box">
+<h3>📌 DFS vs BFS</h3>
+
+<p>DFS → recursion / stack</p>
+<p>BFS → queue use hota hai</p>
+
+</div>
+
+<!-- CODE -->
+<div class="box">
+<h3>💻 Basic Code (Traversal)</h3>
+
+<div class="code">
+void inorder(Node root){
+ if(root == null) return;
+
+ inorder(root.left);
+ System.out.print(root.val);
+ inorder(root.right);
+}
+</div>
+</div>
+
+<!-- QUESTIONS -->
+<div class="box">
+<h3>🎯 Important Questions</h3>
+
+<ul>
+<li>Maximum Depth of Tree</li>
+<li>Invert Binary Tree</li>
+<li>Same Tree</li>
+<li>Level Order Traversal</li>
+</ul>
+
+</div>
+
+</div>
+<!-- hashing---------------- -->
+ <!-- HASHING SECTION -->
+<div id="hashing" class="container">
+
+<h1>🔑 Hashing Complete Guide</h1>
+
+<!-- INTRO -->
+<div class="box">
+<h3>📌 What is Hashing?</h3>
+<p>
+Hashing ek technique hai jisme data ko fast access ke liye store kiya jata hai.
+Ye key → value mapping use karta hai (HashMap / HashSet).
+</p>
+
+<div class="diagram">
+<div class="cell">Key</div>
+<div class="cell">→</div>
+<div class="cell">Value</div>
+</div>
+
+</div>
+
+<!-- TYPES -->
+<div class="box">
+<h3>📌 Types of Hashing</h3>
+
+<p><b>1. HashMap</b></p>
+<p>Key → Value pair store karta hai</p>
+
+<p><b>2. HashSet</b></p>
+<p>Unique elements store karta hai</p>
+
+</div>
+
+<!-- WORKING -->
+<div class="box">
+<h3>📌 How Hashing Works?</h3>
+
+<p>
+Hash function key ko index me convert karta hai.
+</p>
+
+<p><b>Example:</b></p>
+<p>key = 10 → index = 10 % size</p>
+
+</div>
+
+<!-- OPERATIONS -->
+<div class="box">
+<h3>📌 Operations</h3>
+
+<ul>
+<li>Insert → add value</li>
+<li>Search → find value</li>
+<li>Delete → remove value</li>
+</ul>
+
+</div>
+
+<!-- COMPLEXITY -->
+<div class="box">
+<h3>📌 Time Complexity</h3>
+
+<ul>
+<li>Insert → O(1)</li>
+<li>Search → O(1)</li>
+<li>Delete → O(1)</li>
+</ul>
+
+</div>
+
+<!-- COLLISION -->
+<div class="box">
+<h3>📌 Collision</h3>
+
+<p>
+Jab 2 keys same index pe map ho jaye to collision hota hai.
+</p>
+
+<p><b>Solutions:</b></p>
+<ul>
+<li>Chaining</li>
+<li>Open Addressing</li>
+</ul>
+
+</div>
+
+<!-- PATTERNS -->
+<div class="box">
+<h3>📌 Important Patterns 🔥</h3>
+
+<p><b>1. Frequency Count</b></p>
+<p>Kitni baar element aaya</p>
+
+<p><b>2. Lookup / Contains</b></p>
+<p>Fast existence check</p>
+
+<p><b>3. Two Sum</b></p>
+<p>Pair find using map</p>
+
+</div>
+
+<!-- VISUAL -->
+<div class="box">
+<h3>📌 HashMap Visual</h3>
+
+<div style="text-align:center;">
+Index: 0 → [] <br>
+Index: 1 → [10] <br>
+Index: 2 → [22, 32]  
+</div>
+
+</div>
+
+<!-- CODE -->
+<div class="box">
+<h3>💻 Basic Code</h3>
+
+<div class="code">
+HashSet<Integer> set = new HashSet<>();
+
+set.add(1);
+set.add(2);
+
+if(set.contains(1)){
+ System.out.println("Found");
+}
+</div>
+</div>
+
+<!-- QUESTIONS -->
+<div class="box">
+<h3>🎯 Important Questions</h3>
+
+<ul>
+<li>Contains Duplicate</li>
+<li>Two Sum</li>
+<li>Intersection of Arrays</li>
+<li>Find Difference</li>
+</ul>
+
+</div>
+
+</div>
+<!-- dp---------------------- -->
+ <!-- DP SECTION -->
+<div id="dp" class="container">
+
+<h1>🧠 Dynamic Programming (DP)</h1>
+
+<!-- INTRO -->
+<div class="box">
+<h3>📌 What is DP?</h3>
+<p>
+DP ek optimization technique hai jisme repeated problems ko store karke solve kiya jata hai.
+</p>
+
+</div>
+
+<!-- CORE IDEA -->
+<div class="box">
+<h3>📌 Core Idea</h3>
+
+<p><b>1. Overlapping Subproblems</b></p>
+<p>Same problem baar-baar solve ho raha hai</p>
+
+<p><b>2. Optimal Substructure</b></p>
+<p>Chhote solution se bada solution banta hai</p>
+
+</div>
+
+<!-- TYPES -->
+<div class="box">
+<h3>📌 Types of DP</h3>
+
+<p><b>1. Memoization (Top-Down)</b></p>
+<p>Recursion + store results</p>
+
+<p><b>2. Tabulation (Bottom-Up)</b></p>
+<p>Loop use karke build karte hain</p>
+
+</div>
+
+<!-- EXAMPLE -->
+<div class="box">
+<h3>📌 Fibonacci Example</h3>
+
+<div style="text-align:center;">
+F(5) → F(4) + F(3)  
+<br>
+Repeated calls hoti hain
+</div>
+
+</div>
+
+<!-- DP TABLE -->
+<div class="box">
+<h3>📌 DP Table Concept</h3>
+
+<div class="diagram">
+<div class="cell">0</div>
+<div class="cell">1</div>
+<div class="cell">1</div>
+<div class="cell">2</div>
+<div class="cell">3</div>
+<div class="cell">5</div>
+</div>
+
+<p style="text-align:center;">Store previous results</p>
+
+</div>
+
+<!-- STEPS -->
+<div class="box">
+<h3>📌 How to Solve DP</h3>
+
+<ul>
+<li>Problem ko small parts me todo</li>
+<li>Recurrence relation banao</li>
+<li>Base case define karo</li>
+<li>Store results</li>
+</ul>
+
+</div>
+
+<!-- COMPLEXITY -->
+<div class="box">
+<h3>📌 Time Complexity</h3>
+
+<p>
+DP recursion ko optimize karta hai → exponential se O(n) ya O(n²)
+</p>
+
+</div>
+
+<!-- PATTERNS -->
+<div class="box">
+<h3>📌 Important Patterns 🔥</h3>
+
+<p><b>1. 1D DP</b></p>
+<p>Fibonacci, Climbing Stairs</p>
+
+<p><b>2. 2D DP</b></p>
+<p>Grid problems</p>
+
+<p><b>3. Knapsack</b></p>
+<p>Weight/value optimization</p>
+
+</div>
+
+<!-- CODE -->
+<div class="box">
+<h3>💻 Basic Code</h3>
+
+<div class="code">
+int[] dp = new int[n+1];
+
+dp[0] = 0;
+dp[1] = 1;
+
+for(int i=2;i<=n;i++){
+ dp[i] = dp[i-1] + dp[i-2];
+}
+</div>
+</div>
+
+<!-- QUESTIONS -->
+<div class="box">
+<h3>🎯 Important Questions</h3>
+
+<ul>
+<li>Climbing Stairs</li>
+<li>Fibonacci</li>
+<li>House Robber</li>
+<li>Longest Common Subsequence</li>
+</ul>
+
+</div>
+
+</div>
+</body>
+</html>
+</body>
+</html>
