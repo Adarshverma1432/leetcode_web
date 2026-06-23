@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Solution - Sum of Multiples</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+    color: white;
+    padding: 30px;
+}
+
+/* BACK BUTTON */
+.back-btn {
+    display: inline-block;
+    padding: 10px 18px;
+    background: #38bdf8;
+    color: #000;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    transition: 0.3s;
+}
+
+.back-btn:hover {
+    background: #0ea5e9;
+    transform: scale(1.05);
+}
+
+/* TITLE */
+h1 {
+    color: #38bdf8;
+    margin-bottom: 10px;
+}
+
+/* DESCRIPTION */
+.desc {
+    background: rgba(255,255,255,0.05);
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    line-height: 1.6;
+    color: #e2e8f0;
+}
+
+/* CODE BOX */
+.code-box {
+    background: #020617;
+    padding: 20px;
+    border-radius: 10px;
+    overflow-x: auto;
+    border-left: 4px solid #38bdf8;
+}
+
+pre {
+    margin: 0;
+    color: #e2e8f0;
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- BACK BUTTON -->
+<a href="javascript:history.back()" class="back-btn">⬅ Back</a>
+
+<!-- TITLE -->
+<h1>Sum of Multiples Solution</h1>
+
+<!-- DESCRIPTION -->
+<div class="desc">
+    <strong>Problem Description:</strong><br><br>
+
+    Given an integer <b>n</b>, return the sum of all numbers from 1 to n (inclusive) 
+    that are divisible by 3, 5, or 7.<br><br>
+
+    <strong>Example:</strong><br>
+    Input: n = 10 <br>
+    Output: 40 <br><br>
+
+    Explanation: Numbers divisible by 3, 5, or 7 are → 3, 5, 6, 7, 9, 10 <br>
+    Sum = 3 + 5 + 6 + 7 + 9 + 10 = 40 <br><br>
+
+    <strong>Approach:</strong><br>
+    We loop from 1 to n and check:<br>
+    If a number is divisible by 3, 5, or 7 → add it to sum.<br><br>
+
+    Condition:
+    <br>
+    <code>i % 3 == 0 || i % 5 == 0 || i % 7 == 0</code>
+</div>
+
+<!-- CODE -->
+<div class="code-box">
+<pre>
+class Solution {
+    public int sumOfMultiples(int n) {
+
+        int sum = 0;
+
+        for (int i = 1; i <= n; i++) {
+
+            if (i % 3 == 0 || i % 5 == 0 || i % 7 == 0) {
+                sum += i;
+            }
+
+        }
+
+        return sum;
+    }
+}
+</pre>
+</div>
+
+</body>
+</html>

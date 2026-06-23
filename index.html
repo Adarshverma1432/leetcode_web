@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DSA Platform</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+    <style>
+        html {
+    scroll-behavior: smooth;
+}
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background: #09d610;
+            color: white;
+        }
+
+        /* ================= NAVBAR ================= */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 90px;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 700;
+            color: #38bdf8;
+        }
+
+        .nav-links a {
+            margin-left: 20px;
+            text-decoration: none;
+            color: white;
+            opacity: 0.8;
+        }
+
+        .nav-links a:hover {
+            opacity: 1;
+        }
+
+        /* ================= HERO ================= */
+        .hero {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 60px 60px;
+        }
+
+        .left {
+            max-width: 500px;
+        }
+
+        .left h1 {
+            font-size: 40px;
+            color: #38bdf8;
+        }
+
+        .left h2 {
+            margin: 20px 0;
+        }
+
+        .left p {
+            opacity: 0.85;
+            line-height: 1.6;
+        }
+
+        .btn {
+            margin-top: 30px;
+            padding: 12px 25px;
+            border-radius: 30px;
+            border: none;
+            background: linear-gradient(45deg, #00f260, #0575e6);
+            color: white;
+            cursor: pointer;
+        }
+
+        .right img {
+            width: 700px;
+        }
+
+        /* ================= FEATURES ================= */
+        .wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr 120px;
+            gap: 20px;
+            padding: 50px;
+        }
+
+        /* BOX */
+        .feature-box {
+            padding: 25px;
+            border-radius: 20px;
+            transition: 0.3s;
+        }
+
+        .feature-box:hover {
+            transform: translateY(-8px);
+        }
+
+        /* ICON */
+        .icon {
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+
+        /* COLORS */
+        .blue {
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+        }
+
+        .yellow {
+            background: linear-gradient(135deg, #facc15, #f59e0b);
+        }
+
+        .green {
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+        }
+
+        .red {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+        }
+
+        /* TEXT */
+        .feature-box h3 {
+            margin: 0 0 10px;
+        }
+
+        .feature-box p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        /* ================= DSA COLUMN ================= */
+        .dsa-column {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* DSA TEXT */
+        .dsa-text {
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+
+            font-size: 70px;
+            font-weight: 800;
+
+            background: linear-gradient(to bottom, #38bdf8, #22c55e);
+            -webkit-background-clip: text;
+            color: transparent;
+
+            letter-spacing: 8px;
+        }
+
+        /* FIRE ICON */
+        .fire {
+            font-size: 28px;
+            margin-top: 10px;
+        }
+
+        /* ================= RESPONSIVE ================= */
+        @media (max-width: 900px) {
+
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .right img {
+                margin-top: 20px;
+                width: 220px;
+            }
+
+            .wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            /* DSA top pe shift */
+            .dsa-column {
+                order: -1;
+            }
+
+            .dsa-text {
+                writing-mode: horizontal-tb;
+                transform: none;
+                font-size: 40px;
+                text-align: center;
+            }
+        }
+
+        .info-section {
+            text-align: center;
+            padding: 60px 20px;
+            background: #0f172a;
+        }
+
+        .info-section h2 {
+            font-size: 30px;
+            margin-bottom: 15px;
+            color: #38bdf8;
+            font-weight: 600;
+        }
+
+        .info-section p {
+            max-width: 700px;
+            margin: auto;
+            line-height: 1.7;
+            opacity: 0.85;
+            font-size: 16px;
+        }
+
+
+        /* ///////////////// problem */
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: #0a1227;
+            color: white;
+        }
+
+        /* title */
+        h1 {
+            text-align: center;
+            margin: 20px;
+        }
+
+        /* scroll container */
+        .scroll {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            padding: 20px;
+        }
+
+        /* Tablet */
+        @media (max-width: 900px) {
+            .scroll {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Mobile */
+        @media (max-width: 600px) {
+            .scroll {
+                grid-template-columns: repeat(1, 1fr);
+            }
+        }
+
+        /* card */
+        .card {
+            min-width: 250px;
+            background: #1e293b;
+            border-radius: 20px;
+            padding: 20px;
+            position: relative;
+            transition: 0.3s;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
+            margin: 40px;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(0, 255, 255, 0.6);
+        }
+
+        /* level badge */
+        .level {
+            background: #22c55e;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            display: inline-block;
+        }
+
+        /* title */
+        h3 {
+            margin: 15px 0;
+        }
+
+        /* buttons */
+        button {
+            display: block;
+            width: 100%;
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 25px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .code {
+            background: linear-gradient(45deg, #00f260, #0575e6);
+            color: white;
+        }
+
+        .video {
+            background: linear-gradient(45deg, #ff416c, #ff4b2b);
+            color: white;
+        }
+
+        /* scrollbar hide */
+        .scroll::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* //// */
+        .solution-box {
+            display: none;
+            margin-top: 10px;
+            background: #020617;
+            padding: 10px;
+            border-radius: 10px;
+            font-size: 12px;
+            overflow-x: auto;
+        }
+
+        a {
+            text-decoration: none;
+        }
+        /* /////////////// */
+        .mark-btn {
+    background: #020617;
+    color: white;
+}
+
+.mark-btn.done {
+    background: #22c55e;
+    color: black;
+}
+    </style>
+
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <div class="navbar">
+        <div class="logo">CodeJourney</div>
+
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="index.html#ques">Problems</a>
+            <a href="contact.html">contact</a>
+        </div>
+    </div>
+
+    <!-- HERO -->
+    <div class="hero">
+
+        <div class="left">
+            <h1>Build Strong Logic, One Problem at a Time</h1>
+            <h2>Your Daily DSA Practice Hub 🚀</h2>
+
+            <p>
+                Improve your problem-solving skills with structured challenges,
+                stay consistent, and grow step by step into a confident developer.
+            </p>
+
+            <a href="#ques"><button class="btn">Start Practicing</button></a>
+        </div>
+
+        <div class="right">
+            <img src="./hero.png">
+        </div>
+
+    </div>
+<!-- ///////////////// -->
+ 
+    <!-- FEATURES -->
+    <div class="wrapper">
+
+        <!-- BOX 1 -->
+        <div class="feature-box blue">
+            <div class="icon">📘</div>
+            <h3>Structured Learning</h3>
+            <p>Follow a roadmap that builds your logic step by step.</p>
+        </div>
+
+        <!-- BOX 2 -->
+        <div class="feature-box yellow">
+            <div class="icon">👥</div>
+            <h3>Community Support</h3>
+            <p>Learn and grow together with other developers.</p>
+        </div>
+
+        <!-- DSA COLUMN -->
+        <div class="dsa-column">
+            <div class="dsa-text">
+                DSA 🔥
+            </div>
+        </div>
+
+        <!-- BOX 3 -->
+        <div class="feature-box green">
+            <div class="icon">📈</div>
+            <h3>Track Progress</h3>
+            <p>Stay consistent and monitor your daily improvement.</p>
+        </div>
+
+        <!-- BOX 4 -->
+        <div class="feature-box red">
+            <div class="icon">🎯</div>
+            <h3>Goal Focused</h3>
+            <p>Achieve your coding goals step by step.</p>
+        </div>
+
+    </div>
+    <div class="info-section">
+        <h2>Consistency Builds Real Skill 🚀</h2>
+
+        <p>
+            Learning data structures and algorithms is not about rushing through problems,
+            but about building a strong foundation step by step. This platform encourages
+            you to stay consistent, think deeply, and understand patterns behind every solution.
+            With regular practice, you will improve your logic, speed, and confidence in solving
+            complex problems. Keep showing up every day, and over time, you will see real growth
+            in your problem-solving ability.
+        </p>
+    </div>
+    <!-- ///////////////////// problem -->
+    <h1 id="ques">🚀 Coding Levels</h1>
+    <h2 id="progress" style="margin-left: 60px;"></h2>
+
+    <div class="scroll">
+
+        <div class="card">
+
+            <span class="level">Level 1</span>
+            <h3>Palindrome Number</h3>
+
+            <a href="https://leetcode.com/problems/palindrome-number/" target="_blank">
+                <button class="code">Practice Problem</button>
+            </a>
+
+            <a href="solution.html?problem=palindrome">
+                <button class="video">View Solution</button>
+            </a>
+             <button class="mark-btn" data-problem="palindrome">
+    Mark as Done ✅
+</button>
+
+        </div>
+        <!-- Card 2 -->
+
+       <div class="card">
+
+    <span class="level">Level 2</span>
+    <h3>Sum Multiples</h3>
+
+    <!-- LeetCode link -->
+    <a href="https://leetcode.com/problems/sum-of-multiples/" target="_blank">
+        <button class="code">Practice Problem</button>
+    </a>
+
+    <!-- Solution -->
+    <a href="solution.html?problem=sum-multiples">
+        <button class="video">View Solution</button>
+    </a>
+
+    <!-- Mark Done -->
+    <button class="mark-btn" data-problem="sum-multiples">
+        Mark as Done ✅
+    </button>
+
+</div>
+        <!-- /////////// -->
+        <!-- Average Salary -->
+        <div class="card">
+            <span class="level">Level 3</span>
+            <h3>1491. Average Salary Excluding Minimum and Maximum Salary</h3>
+            <a href="https://leetcode.com/problems/average-salary-excluding-the-minimum-and-maximum-salary/"
+                target="_blank">
+                <button class="code">Practice Problem</button>
+            </a>
+            <a href="solution.html?problem=avg-salary">
+                <button class="video">View Solution</button>
+            </a>
+            <button class="mark-btn" data-problem="avg-salary">Mark as Done ✅</button>
+
+        </div>
+
+        <!-- Kth Largest -->
+        <div class="card">
+            <span class="level">Level 4</span>
+            <h3>215. Kth Largest Element in an Array</h3>
+            <a href="https://leetcode.com/problems/kth-largest-element-in-an-array/" target="_blank">
+                <button class="code">Practice Problem</button>
+            </a>
+            <a href="solution.html?problem=kth-largest">
+                <button class="video">View Solution</button>
+            </a>
+            <button class="mark-btn" data-problem="kth-largest">Mark as Done ✅</button>
+
+        </div>
+
+        <!-- Max Count -->
+        <div class="card">
+            <span class="level">Level 5</span>
+            <h3>2529. Maximum Count of Positive Integer and Negative Integer</h3>
+            <a href="https://leetcode.com/problems/maximum-count-of-positive-integer-and-negative-integer/"
+                target="_blank">
+                <button class="code">Practice Problem</button>
+            </a>
+            <a href="solution.html?problem=max-count">
+                <button class="video">View Solution</button>
+            </a>
+            <button class="mark-btn" data-problem="max-count">Mark as Done ✅</button>
+
+        </div>
+
+        <!-- Target Indices -->
+        <div class="card">
+            <span class="level">Level 6</span>
+            <h3>2089. Find Target Indices After Sorting Array</h3>
+            <a href="https://leetcode.com/problems/find-target-indices-after-sorting-array/" target="_blank">
+                <button class="code">Practice Problem</button>
+            </a>
+            <a href="solution.html?problem=target-indices">
+                <button class="video">View Solution</button>
+            </a>
+            <button class="mark-btn" data-problem="target-indices">Mark as Done ✅</button>
+
+        </div>
+
+        <!-- Single Element -->
+        <div class="card">
+            <span class="level">Level 7</span>
+            <h3>540. Single Element in a Sorted Array</h3>
+            <a href="https://leetcode.com/problems/single-element-in-a-sorted-array/" target="_blank">
+                <button class="code">Practice Problem</button>
+            </a>
+            <a href="solution.html?problem=single-element">
+                <button class="video">View Solution</button>
+            </a>
+            <button class="mark-btn" data-problem="single-element">Mark as Done ✅</button>
+
+        </div>
+
+        <!-- Power of Two -->
+        <div class="card">
+            <span class="level">Level 8</span>
+            <h3>231. Power of Two</h3>
+            <a href="https://leetcode.com/problems/power-of-two/" target="_blank">
+                <button class="code">Practice Problem</button>
+            </a>
+            <a href="solution.html?problem=power-two">
+                <button class="video">View Solution</button>
+            </a>
+            <button class="mark-btn" data-problem="power-two">Mark as Done ✅</button>
+
+        </div>
+
+        <!-- Power of Four -->
+        <div class="card">
+            <span class="level">Level 9</span>
+            <h3>342. Power of Four</h3>
+            <a href="https://leetcode.com/problems/power-of-four/" target="_blank">
+                <button class="code">Practice Problem</button>
+            </a>
+            <a href="solution.html?problem=power-four">
+                <button class="video">View Solution</button>
+            </a>
+            <button class="mark-btn" data-problem="power-four">Mark as Done ✅</button>
+
+        </div>
+
+        <!-- Power of Three -->
+        <div class="card">
+            <span class="level">Level 10</span>
+            <h3>326. Power of Three</h3>
+            <a href="https://leetcode.com/problems/power-of-three/" target="_blank">
+                <button class="code">Practice Problem</button>
+            </a>
+            <a href="solution.html?problem=power-three">
+                <button class="video">View Solution</button>
+            </a>
+            <button class="mark-btn" data-problem="power-three">Mark as Done ✅</button>
+
+        </div>
+
+        <!-- Nim Game -->
+        <div class="card">
+            <span class="level">Level 11</span>
+            <h3>292. Nim Game</h3>
+            <a href="https://leetcode.com/problems/nim-game/" target="_blank">
+                <button class="code">Practice Problem</button>
+            </a>
+            <a href="solution.html?problem=nim-game">
+                <button class="video">View Solution</button>
+            </a>
+            <button class="mark-btn" data-problem="nim-game">Mark as Done ✅</button>
+
+        </div>
+
+        <!-- Subarray Product -->
+        <div class="card">
+            <span class="level">Level 12</span>
+            <h3>713. Subarray Product Less Than K</h3>
+            <a href="https://leetcode.com/problems/subarray-product-less-than-k/" target="_blank">
+                <button class="code">Practice Problem</button>
+            </a>
+            <a href="solution.html?problem=subarray-product">
+                <button class="video">View Solution</button>
+            </a>
+            <button class="mark-btn" data-problem="subarray-product">Mark as Done ✅</button>
+
+        </div>
+
+        <!-- Squares -->
+        <div class="card">
+            <span class="level">Level 13</span>
+            <h3>977. Squares of a Sorted Array</h3>
+            <a href="https://leetcode.com/problems/squares-of-a-sorted-array/" target="_blank">
+                <button class="code">Practice Problem</button>
+            </a>
+            <a href="solution.html?problem=squares">
+                <button class="video">View Solution</button>
+            </a>
+            <button class="mark-btn" data-problem="squares">Mark as Done ✅</button>
+
+        </div>
+
+        <!-- Missing Number -->
+        <div class="card">
+            <span class="level">Level 14</span>
+            <h3>268. Missing Number</h3>
+            <a href="https://leetcode.com/problems/missing-number/" target="_blank">
+                <button class="code">Practice Problem</button>
+            </a>
+            <a href="solution.html?problem=missing-number">
+                <button class="video">View Solution</button>
+            </a>
+            <button class="mark-btn" data-problem="missing-number">Mark as Done ✅</button>
+
+        </div>
+        <!-- /////////////// -->
+        <!-- Remove Element -->
+        <div class="card">
+            <span class="level">Level 15</span>
+            <h3>27. Remove Element</h3>
+            <a href="https://leetcode.com/problems/remove-element/" target="_blank">
+                <button class="code">Practice Problem</button>
+            </a>
+            <a href="solution.html?problem=remove-element">
+                <button class="video">View Solution</button>
+            </a>
+            <button class="mark-btn" data-problem="remove-element">Mark as Done ✅</button>
+
+        </div>
+
+        <!-- Count Negative -->
+        <div class="card">
+            <span class="level">Level 16</span>
+            <h3>1351. Count Negative Numbers</h3>
+            <a href="https://leetcode.com/problems/count-negative-numbers-in-a-sorted-matrix/" target="_blank">
+                <button class="code">Practice Problem</button>
+            </a>
+            <a href="solution.html?problem=count-negative">
+                <button class="video">View Solution</button>
+            </a>
+            <button class="mark-btn" data-problem="count-negative">Mark as Done ✅</button>
+
+        </div>
+
+        <!-- Good Pairs -->
+        <div class="card">
+            <span class="level">Level 17</span>
+            <h3>1512. Number of Good Pairs</h3>
+            <a href="https://leetcode.com/problems/number-of-good-pairs/" target="_blank">
+                <button class="code">Practice Problem</button>
+            </a>
+            <a href="solution.html?problem=good-pairs">
+                <button class="video">View Solution</button>
+            </a>
+            <button class="mark-btn" data-problem="good-pairs">Mark as Done ✅</button>
+
+        </div>
+
+        <!-- Contains Duplicate -->
+        <div class="card">
+            <span class="level">Level 18</span>
+            <h3>217. Contains Duplicate</h3>
+            <a href="https://leetcode.com/problems/contains-duplicate/" target="_blank">
+                <button class="code">Practice Problem</button>
+            </a>
+            <a href="solution.html?problem=contains-duplicate">
+                <button class="video">View Solution</button>
+            </a>
+            <button class="mark-btn" data-problem="contains-duplicate">Mark as Done ✅</button>
+
+        </div>
+
+        <!-- Pairs Less Than Target -->
+        <div class="card">
+            <span class="level">Level 19</span>
+            <h3>2824. Count Pairs Less Than Target</h3>
+            <a href="https://leetcode.com/problems/count-pairs-whose-sum-is-less-than-target/" target="_blank">
+                <button class="code">Practice Problem</button>
+            </a>
+            <a href="solution.html?problem=pairs-less-target">
+                <button class="video">View Solution</button>
+            </a>
+            <button class="mark-btn" data-problem="pairs-less-target">Mark as Done ✅</button>
+
+        </div>
+
+        <!-- Divide -->
+        <div class="card">
+            <span class="level">Level 20</span>
+            <h3>29. Divide Two Integers</h3>
+            <a href="https://leetcode.com/problems/divide-two-integers/" target="_blank">
+                <button class="code">Practice Problem</button>
+            </a>
+            <a href="solution.html?problem=divide">
+                <button class="video">View Solution</button>
+            </a>
+            <button class="mark-btn" data-problem="divide">Mark as Done ✅</button>
+
+        </div>
+
+        <!-- Smallest Even -->
+        <div class="card">
+            <span class="level">Level 21</span>
+            <h3>2413. Smallest Even Multiple</h3>
+            <a href="https://leetcode.com/problems/smallest-even-multiple/" target="_blank">
+                <button class="code">Practice Problem</button>
+            </a>
+            <a href="solution.html?problem=smallest-even">
+                <button class="video">View Solution</button>
+            </a>
+            <button class="mark-btn" data-problem="smallest-even">Mark as Done ✅</button>
+
+        </div>
+
+        <!-- Reverse String -->
+        <div class="card">
+            <span class="level">Level 22</span>
+            <h3>344. Reverse String</h3>
+            <a href="https://leetcode.com/problems/reverse-string/" target="_blank">
+                <button class="code">Practice Problem</button>
+            </a>
+            <a href="solution.html?problem=reverse-string">
+                <button class="video">View Solution</button>
+            </a>
+            <button class="mark-btn" data-problem="reverse-string">Mark as Done ✅</button>
+
+        </div>
+
+        <!-- Goal Parser -->
+        <div class="card">
+            <span class="level">Level 23</span>
+            <h3>1678. Goal Parser</h3>
+            <a href="https://leetcode.com/problems/goal-parser-interpretation/" target="_blank">
+                <button class="code">Practice Problem</button>
+            </a>
+            <a href="solution.html?problem=goal-parser">
+                <button class="video">View Solution</button>
+            </a>
+            <button class="mark-btn" data-problem="goal-parser">Mark as Done ✅</button>
+
+        </div>
+
+        <!-- Defang IP -->
+        <div class="card">
+            <span class="level">Level 24</span>
+            <h3>1108. Defanging IP Address</h3>
+            <a href="https://leetcode.com/problems/defanging-an-ip-address/" target="_blank">
+                <button class="code">Practice Problem</button>
+            </a>
+            <a href="solution.html?problem=defang-ip">
+                <button class="video">View Solution</button>
+            </a>
+            <button class="mark-btn" data-problem="defang-ip">Mark as Done ✅</button>
+
+        </div>
+
+        <!-- Lower Case -->
+        <div class="card">
+            <span class="level">Level 25</span>
+            <h3>709. To Lower Case</h3>
+            <a href="https://leetcode.com/problems/to-lower-case/" target="_blank">
+                <button class="code">Practice Problem</button>
+            </a>
+            <a href="solution.html?problem=lower-case">
+                <button class="video">View Solution</button>
+            </a>
+            <button class="mark-btn" data-problem="lower-case">Mark as Done ✅</button>
+
+        </div>
+
+        <!-- Rotated Search -->
+        <div class="card">
+            <span class="level">Level 26</span>
+            <h3>33. Search in Rotated Sorted Array</h3>
+            <a href="https://leetcode.com/problems/search-in-rotated-sorted-array/" target="_blank">
+                <button class="code">Practice Problem</button>
+            </a>
+            <a href="solution.html?problem=rotated-search">
+                <button class="video">View Solution</button>
+            </a>
+            <button class="mark-btn" data-problem="rotated-search">Mark as Done ✅</button>
+
+        </div>
+
+        <!-- Count Odd -->
+        <div class="card">
+            <span class="level">Level 27</span>
+            <h3>1523. Count Odd Numbers</h3>
+            <a href="https://leetcode.com/problems/count-odd-numbers-in-an-interval-range/" target="_blank">
+                <button class="code">Practice Problem</button>
+            </a>
+            <a href="solution.html?problem=count-odd">
+                <button class="video">View Solution</button>
+            </a>
+            <button class="mark-btn" data-problem="count-odd">Mark as Done ✅</button>
+        </div>
+
+        <!-- /////////// -->
+        <script>
+
+let solved = JSON.parse(localStorage.getItem("solved")) || [];
+
+const buttons = document.querySelectorAll(".mark-btn");
+
+buttons.forEach(btn => {
+
+    let problem = btn.dataset.problem;
+
+    /* Page load pe check */
+    if (solved.includes(problem)) {
+        btn.classList.add("done");
+        btn.innerText = "Completed ✅";
+    }
+
+    /* Click pe */
+    btn.addEventListener("click", () => {
+
+        if (!solved.includes(problem)) {
+
+            solved.push(problem);
+            localStorage.setItem("solved", JSON.stringify(solved));
+
+            btn.classList.add("done");
+            btn.innerText = "Completed ✅";
+
+            updateProgress();
+        }
+    });
+
+});
+
+function updateProgress() {
+    document.getElementById("progress").innerText =
+        "Solved: " + solved.length + " problems";
+}
+
+updateProgress();
+
+</script>
+        <!-- ////////////////// -->
+        <script>
+            function toggleSolution(btn) {
+                let box = btn.nextElementSibling;
+
+                if (box.style.display === "block") {
+                    box.style.display = "none";
+                    btn.innerText = "View Solution";
+                } else {
+                    box.style.display = "block";
+                    btn.innerText = "Hide Solution";
+                }
+            }
+        </script>
+</body>
+
+</html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>About - CodeJourney</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+<style>
+
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: #0f172a;
+    color: white;
+}
+
+/* NAVBAR */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 80px;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: 700;
+    color: #38bdf8;
+}
+
+.nav-links a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: white;
+    opacity: 0.8;
+}
+
+/* HERO */
+.hero {
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.hero h1 {
+    font-size: 45px;
+    color: #38bdf8;
+}
+
+.hero p {
+    max-width: 750px;
+    margin: 20px auto;
+    line-height: 1.7;
+    opacity: 0.9;
+}
+
+/* SECTION */
+.section {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.section h2 {
+    color: #38bdf8;
+    margin-bottom: 15px;
+}
+
+.section p {
+    max-width: 750px;
+    margin: auto;
+    opacity: 0.9;
+    line-height: 1.7;
+}
+
+/* FEATURES */
+.features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    padding: 40px;
+}
+
+.card {
+    background: #1e293b;
+    padding: 25px;
+    border-radius: 15px;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+}
+
+/* TIMELINE */
+.timeline {
+    padding: 60px 20px;
+}
+
+.timeline-box {
+    max-width: 700px;
+    margin: auto;
+    border-left: 2px solid #38bdf8;
+    padding-left: 20px;
+}
+
+.timeline-box div {
+    margin-bottom: 20px;
+}
+
+/* CTA */
+.cta {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.btn {
+    padding: 12px 25px;
+    border-radius: 25px;
+    background: linear-gradient(45deg, #00f260, #0575e6);
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+}
+
+/* RESPONSIVE */
+@media(max-width: 900px) {
+    .features {
+        grid-template-columns: 1fr;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+    <div class="logo">CodeJourney</div>
+
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="index.html#ques">Problems</a>
+         <a href="contact.html">Contact</a>
+    </div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+    <h1>About CodeJourney 🚀</h1>
+    <p>
+        CodeJourney is not just a platform, it's a daily habit builder for developers. 
+        We focus on helping you master Data Structures and Algorithms through consistency, 
+        structured practice, and deep understanding.
+    </p>
+</div>
+
+<!-- STORY -->
+<div class="section">
+    <h2>Why This Platform? 💡</h2>
+    <p>
+        Many students start DSA but quit halfway due to lack of direction. CodeJourney 
+        solves this problem by providing a clear roadmap, categorized problems, and 
+        step-by-step solutions. The goal is not just solving questions, but understanding patterns.
+    </p>
+</div>
+
+<!-- FEATURES -->
+<div class="features">
+
+    <div class="card">
+        <h3>📘 Structured Roadmap</h3>
+        <p>Follow a clear path from beginner to advanced level.</p>
+    </div>
+
+    <div class="card">
+        <h3>🧠 Concept Focus</h3>
+        <p>Understand logic behind every problem, not just code.</p>
+    </div>
+
+    <div class="card">
+        <h3>⚡ Fast Practice</h3>
+        <p>Quick problems designed for daily consistency.</p>
+    </div>
+
+</div>
+
+<!-- HOW IT WORKS -->
+<div class="section">
+    <h2>How It Works ⚙️</h2>
+    <p>
+        Start from Level 1 problems and gradually move forward. Each problem comes with 
+        explanation, approach, and code. Practice daily, track your progress, and build 
+        strong logic step by step.
+    </p>
+</div>
+
+<!-- TIMELINE -->
+<div class="timeline">
+    <h2 style="text-align:center; color:#38bdf8;">Your Growth Journey 📈</h2>
+
+    <div class="timeline-box">
+        <div>✅ Day 1-7 → Basic Problems</div>
+        <div>✅ Week 2 → Pattern Understanding</div>
+        <div>✅ Week 3 → Medium Level Confidence</div>
+        <div>✅ 1 Month → Strong Problem Solver 🚀</div>
+    </div>
+</div>
+
+<!-- CTA -->
+<div class="cta">
+    <h2>Start Your Journey Today 🚀</h2>
+    <br>
+    <a href="index.html#ques" class="btn">Start Practicing</a>
+</div>
+
+</body>
+</html>

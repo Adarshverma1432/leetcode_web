@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>DSA Solution</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+    color: white;
+    padding: 30px;
+}
+
+/* BACK BUTTON */
+.back-btn {
+    display: inline-block;
+    padding: 10px 18px;
+    background: #38bdf8;
+    color: #000;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    transition: 0.3s;
+}
+
+.back-btn:hover {
+    background: #0ea5e9;
+    transform: scale(1.05);
+}
+
+/* TITLE */
+h1 {
+    color: #38bdf8;
+    margin-bottom: 10px;
+}
+
+/* DESCRIPTION */
+.desc {
+    background: rgba(255,255,255,0.05);
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    line-height: 1.6;
+    color: #e2e8f0;
+}
+
+/* CODE BOX */
+.code-box {
+    background: #020617;
+    padding: 20px;
+    border-radius: 10px;
+    overflow-x: auto;
+    border-left: 4px solid #38bdf8;
+}
+
+pre {
+    margin: 0;
+    color: #e2e8f0;
+    white-space: pre-wrap;
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- BACK BUTTON -->
+<a href="javascript:history.back()" class="back-btn">⬅ Back</a>
+
+<!-- DYNAMIC CONTENT -->
+<h1 id="title">Loading...</h1>
+
+<div class="desc" id="desc"></div>
+
+<div class="code-box">
+<pre id="code"></pre>
+</div>
+
+<script>
+
+/* ================= DATA ================= */
+const data = {
+
+    sum: {
+        title: "Sum of Multiples",
+        desc: `
+Given an integer n, return the sum of all numbers from 1 to n 
+that are divisible by 3, 5, or 7.
+
+Example:
+Input: n = 10
+Output: 40
+
+Approach:
+Loop from 1 to n and check:
+i % 3 == 0 || i % 5 == 0 || i % 7 == 0
+        `,
+        code: `class Solution {
+    public int sumOfMultiples(int n) {
+
+        int sum = 0;
+
+        for (int i = 1; i <= n; i++) {
+
+            if (i % 3 == 0 || i % 5 == 0 || i % 7 == 0) {
+                sum += i;
+            }
+
+        }
+
+        return sum;
+    }
+}`
+    },
+    
+
+    palindrome: {
+        title: "Palindrome Number",
+        desc: `
+Given an integer x, return true if it is a palindrome.
+
+Example:
+121 → true
+123 → false
+
+Approach:
+Reverse the number and compare with original.
+        `,
+        code: `class Solution {
+    public boolean isPalindrome(int x) {
+        if (x < 0) return false;
+
+        int rev = 0, temp = x;
+
+        while (temp != 0) {
+            rev = rev * 10 + temp % 10;
+            temp /= 10;
+        }
+
+        return rev == x;
+    }
+}`
+    },"avg-salary": {
+title: "Average Salary Excluding Minimum and Maximum Salary",
+desc: `
+Problem:
+Given an array of salaries, return the average excluding the minimum and maximum salary.
+
+Approach:
+1. Find min and max salary.
+2. Calculate total sum.
+3. Subtract min and max from sum.
+4. Divide by (n - 2).
+`,
+code: `class Solution {
+    public double average(int[] salary) {
+        int min = Integer.MAX_VALUE, max = Integer.MIN_VALUE, sum = 0;
+
+        for(int s : salary){
+            min = Math.min(min, s);
+            max = Math.max(max, s);
+            sum += s;
+        }
+
+        return (sum - min - max) * 1.0 / (salary.length - 2);
+    }
+}`
+},
+
+"kth-largest": {
+title: "Kth Largest Element in an Array",
+desc: `
+Problem:
+Find the kth largest element in an array.
+
+Approach:
+Use a min heap (PriorityQueue):
+1. Add elements to heap.
+2. Keep size = k.
+3. Remove smallest when size > k.
+4. Top element is kth largest.
+`,
+code: `import java.util.*;
+class Solution {
+    public int findKthLargest(int[] nums, int k) {
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+
+        for(int n : nums){
+            pq.add(n);
+            if(pq.size() > k) pq.poll();
+        }
+
+        return pq.peek();
+    }
+}`
+},
+
+"max-count": {
+title: "Maximum Count of Positive and Negative",
+desc: `
+Problem:
+Count positive and negative numbers and return the maximum.
+
+Approach:
+Loop through array:
+- count positives
+- count negatives
+Return max of both.
+`,
+code: `class Solution {
+    public int maximumCount(int[] nums) {
+        int pos = 0, neg = 0;
+
+        for(int n : nums){
+            if(n > 0) pos++;
+            else if(n < 0) neg++;
+        }
+
+        return Math.max(pos, neg);
+    }
+}`
+},
+
+"target-indices": {
+title: "Find Target Indices After Sorting Array",
+desc: `
+Problem:
+Return indices of target after sorting.
+
+Approach:
+1. Sort array
+2. Traverse and store indices where element == target
+`,
+code: `import java.util.*;
+class Solution {
+    public List<Integer> targetIndices(int[] nums, int target) {
+        Arrays.sort(nums);
+        List<Integer> res = new ArrayList<>();
+
+        for(int i = 0; i < nums.length; i++){
+            if(nums[i] == target) res.add(i);
+        }
+
+        return res;
+    }
+}`
+},
+
+"single-element": {
+title: "Single Element in Sorted Array",
+desc: `
+Problem:
+Every element appears twice except one. Find it.
+
+Approach:
+Binary Search:
+- Pair index even-odd check
+- Move left or right accordingly
+`,
+code: `class Solution {
+    public int singleNonDuplicate(int[] nums) {
+        int l = 0, r = nums.length - 1;
+
+        while(l < r){
+            int mid = (l + r) / 2;
+
+            if(mid % 2 == 1) mid--;
+
+            if(nums[mid] == nums[mid + 1]) l = mid + 2;
+            else r = mid;
+        }
+
+        return nums[l];
+    }
+}`
+},
+
+"subarray-product": {
+title: "Subarray Product Less Than K",
+desc: `
+Problem:
+Count subarrays where product < k.
+
+Approach:
+Sliding Window:
+- Expand right
+- Shrink left if product >= k
+- Count valid subarrays
+`,
+code: `class Solution {
+    public int numSubarrayProductLessThanK(int[] nums, int k) {
+        if(k <= 1) return 0;
+
+        int prod = 1, left = 0, count = 0;
+
+        for(int right = 0; right < nums.length; right++){
+            prod *= nums[right];
+
+            while(prod >= k){
+                prod /= nums[left++];
+            }
+
+            count += right - left + 1;
+        }
+
+        return count;
+    }
+}`
+},
+
+"squares": {
+title: "Squares of a Sorted Array",
+desc: `
+Problem:
+Return sorted squares of array.
+
+Approach:
+Two pointers:
+- Compare absolute values
+- Fill result from end
+`,
+code: `class Solution {
+    public int[] sortedSquares(int[] nums) {
+        int n = nums.length;
+        int[] res = new int[n];
+
+        int l = 0, r = n - 1, i = n - 1;
+
+        while(l <= r){
+            if(Math.abs(nums[l]) > Math.abs(nums[r])){
+                res[i--] = nums[l] * nums[l];
+                l++;
+            } else {
+                res[i--] = nums[r] * nums[r];
+                r--;
+            }
+        }
+
+        return res;
+    }
+}`
+},
+
+"missing-number": {
+title: "Missing Number",
+desc: `
+Problem:
+Find missing number from 0 to n.
+
+Approach:
+Use sum formula:
+n*(n+1)/2 - actual sum
+`,
+code: `class Solution {
+    public int missingNumber(int[] nums) {
+        int n = nums.length;
+        int sum = n * (n + 1) / 2;
+
+        for(int num : nums) sum -= num;
+
+        return sum;
+    }
+}`
+},
+"remove-element": {
+title: "Remove Element",
+desc: `
+Problem:
+Given an array nums and a value val, remove all occurrences of val in-place.
+
+Example:
+nums = [3,2,2,3], val = 3 → Output = 2
+
+Approach:
+Use two pointers:
+- Traverse array
+- Copy only non-val elements forward
+- Return new length
+`,
+code: `class Solution {
+    public int removeElement(int[] nums, int val) {
+        int k = 0;
+        for(int i=0;i<nums.length;i++){
+            if(nums[i]!=val){
+                nums[k++] = nums[i];
+            }
+        }
+        return k;
+    }
+}`
+},
+
+"count-negative": {
+title: "Count Negative Numbers in a Sorted Matrix",
+desc: `
+Problem:
+Count total negative numbers in a sorted matrix.
+
+Example:
+[[4,3,-1], [3,-1,-2]] → Output: 3
+
+Approach:
+Brute force:
+- Traverse every element
+- Count negatives
+(Optimized: binary search per row)
+`,
+code: `class Solution {
+    public int countNegatives(int[][] grid) {
+        int count=0;
+        for(int[] row:grid){
+            for(int n:row){
+                if(n<0) count++;
+            }
+        }
+        return count;
+    }
+}`
+},
+
+"good-pairs": {
+title: "Number of Good Pairs",
+desc: `
+Problem:
+Find number of pairs (i, j) where i < j and nums[i] == nums[j].
+
+Example:
+[1,2,3,1,1,3] → Output: 4
+
+Approach:
+- Compare each pair
+- Count when equal
+(Optimized: use hashmap frequency)
+`,
+code: `class Solution {
+    public int numIdenticalPairs(int[] nums) {
+        int count=0;
+        for(int i=0;i<nums.length;i++){
+            for(int j=i+1;j<nums.length;j++){
+                if(nums[i]==nums[j]) count++;
+            }
+        }
+        return count;
+    }
+}`
+},
+
+"contains-duplicate": {
+title: "Contains Duplicate",
+desc: `
+Problem:
+Check if any element appears more than once.
+
+Example:
+[1,2,3,1] → true
+
+Approach:
+- Use HashSet
+- If element already exists → duplicate
+`,
+code: `import java.util.*;
+class Solution {
+    public boolean containsDuplicate(int[] nums) {
+        Set<Integer> set=new HashSet<>();
+        for(int n:nums){
+            if(!set.add(n)) return true;
+        }
+        return false;
+    }
+}`
+},
+
+"pairs-less-target": {
+title: "Count Pairs Less Than Target",
+desc: `
+Problem:
+Count pairs where sum < target.
+
+Example:
+[1,2,3], target=4 → Output: 2
+
+Approach:
+- Sort array
+- Use two pointers
+- Count valid pairs efficiently
+`,
+code: `import java.util.*;
+class Solution {
+    public int countPairs(int[] nums,int target){
+        Arrays.sort(nums);
+        int l=0,r=nums.length-1,count=0;
+        while(l<r){
+            if(nums[l]+nums[r]<target){
+                count+=(r-l);
+                l++;
+            }else r--;
+        }
+        return count;
+    }
+}`
+},
+
+"divide": {
+title: "Divide Two Integers",
+desc: `
+Problem:
+Divide two integers without using *, /, %.
+
+Approach:
+- Use bit shifting
+- Subtract multiples of divisor
+- Handle sign separately
+`,
+code: `class Solution {
+    public int divide(int a,int b){
+        long x=Math.abs((long)a),y=Math.abs((long)b);
+        int res=0;
+        while(x>=y){
+            long t=y,m=1;
+            while(x>=(t<<1)){
+                t<<=1;
+                m<<=1;
+            }
+            x-=t;
+            res+=m;
+        }
+        return ((a>0)==(b>0))?res:-res;
+    }
+}`
+},
+
+"smallest-even": {
+title: "Smallest Even Multiple",
+desc: `
+Problem:
+Find smallest number divisible by both n and 2.
+
+Approach:
+- If n even → answer = n
+- Else → answer = 2*n
+`,
+code: `class Solution {
+    public int smallestEvenMultiple(int n) {
+        return n%2==0?n:2*n;
+    }
+}`
+},
+
+"reverse-string": {
+title: "Reverse String",
+desc: `
+Problem:
+Reverse a character array.
+
+Approach:
+- Use two pointers
+- Swap from start and end
+`,
+code: `class Solution {
+    public void reverseString(char[] s) {
+        int l=0,r=s.length-1;
+        while(l<r){
+            char t=s[l];
+            s[l]=s[r];
+            s[r]=t;
+            l++;r--;
+        }
+    }
+}`
+},
+
+"goal-parser": {
+title: "Goal Parser Interpretation",
+desc: `
+Problem:
+Interpret string patterns.
+
+Example:
+"G()(al)" → "Goal"
+
+Approach:
+- Replace "()" with "o"
+- Replace "(al)" with "al"
+`,
+code: `class Solution {
+    public String interpret(String s) {
+        return s.replace("()","o").replace("(al)","al");
+    }
+}`
+},
+
+"defang-ip": {
+title: "Defanging an IP Address",
+desc: `
+Problem:
+Replace "." with "[.]"
+
+Example:
+1.1.1.1 → 1[.]1[.]1[.]1
+`,
+code: `class Solution {
+    public String defangIPaddr(String address) {
+        return address.replace(".","[.]");
+    }
+}`
+},
+
+"lower-case": {
+title: "To Lower Case",
+desc: `
+Problem:
+Convert string to lowercase.
+
+Approach:
+Use built-in function.
+`,
+code: `class Solution {
+    public String toLowerCase(String s) {
+        return s.toLowerCase();
+    }
+}`
+},
+
+"rotated-search": {
+title: "Search in Rotated Sorted Array",
+desc: `
+Problem:
+Search target in rotated sorted array.
+
+Approach:
+- Use modified binary search
+- Check sorted half each time
+`,
+code: `class Solution {
+    public int search(int[] nums,int target){
+        int l=0,r=nums.length-1;
+        while(l<=r){
+            int m=(l+r)/2;
+            if(nums[m]==target) return m;
+            if(nums[l]<=nums[m]){
+                if(target>=nums[l]&&target<nums[m]) r=m-1;
+                else l=m+1;
+            }else{
+                if(target>nums[m]&&target<=nums[r]) l=m+1;
+                else r=m-1;
+            }
+        }
+        return -1;
+    }
+}`
+},
+
+"count-odd": {
+title: "Count Odd Numbers in an Interval Range",
+desc: `
+Problem:
+Count odd numbers between low and high.
+
+Approach:
+Use math formula:
+(high+1)/2 - low/2
+`,
+code: `class Solution {
+    public int countOdds(int low,int high){
+        return (high+1)/2 - low/2;
+    }
+}`
+}
+
+};
+
+/* ================= GET URL PARAM ================= */
+const params = new URLSearchParams(window.location.search);
+const problem = params.get("problem");
+
+/* ================= LOAD DATA ================= */
+const p = data[problem] || data["sum"];
+
+document.getElementById("title").innerText = p.title;
+document.getElementById("desc").innerText = p.desc;
+document.getElementById("code").innerText = p.code;
+
+</script>
+
+</body>
+</html>
