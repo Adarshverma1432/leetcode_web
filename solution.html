@@ -683,6 +683,123 @@ code: `class Solution {
         return (high+1)/2 - low/2;
     }
 }`
+},"intersection-of-two-arrays": {
+    title: "Intersection of Two Arrays",
+    desc: `
+Problem:
+Given two integer arrays nums1 and nums2, return their intersection.
+Each element in the result must be unique.
+
+Approach:
+Use HashSet.
+1. Store nums1 elements in a set
+2. Check nums2 elements in set
+3. Store common elements in result set
+4. Convert set to array
+`,
+    code: `class Solution {
+    public int[] intersection(int[] nums1, int[] nums2) {
+        HashSet<Integer> set = new HashSet<>();
+        HashSet<Integer> res = new HashSet<>();
+
+        for (int n : nums1) {
+            set.add(n);
+        }
+
+        for (int m : nums2) {
+            if (set.contains(m)) {
+                res.add(m);
+            }
+        }
+
+        int[] arr = new int[res.size()];
+        int i = 0;
+
+        for (int r : res) {
+            arr[i++] = r;
+        }
+
+        return arr;
+    }
+}`
+},
+    "find-the-difference-of-two-arrays": {
+    title: "Find the Difference of Two Arrays",
+    desc: `
+Problem:
+Given two integer arrays nums1 and nums2, return a list of two lists:
+- elements present in nums1 but not in nums2
+- elements present in nums2 but not in nums1
+
+Approach:
+Use HashSet.
+1. Store both arrays in sets
+2. Compare elements
+3. Add unique elements to separate lists
+`,
+    code: `class Solution {
+    public List<List<Integer>> findDifference(int[] nums1, int[] nums2) {
+        HashSet<Integer> set1 = new HashSet<>();
+        HashSet<Integer> set2 = new HashSet<>();
+
+        for (int n : nums1) set1.add(n);
+        for (int n : nums2) set2.add(n);
+
+        List<Integer> list1 = new ArrayList<>();
+        List<Integer> list2 = new ArrayList<>();
+
+        for (int n : set1) {
+            if (!set2.contains(n)) {
+                list1.add(n);
+            }
+        }
+
+        for (int n : set2) {
+            if (!set1.contains(n)) {
+                list2.add(n);
+            }
+        }
+
+        List<List<Integer>> ans = new ArrayList<>();
+        ans.add(list1);
+        ans.add(list2);
+
+        return ans;
+    }
+}`
+},
+    "minimum-common-value": {
+    title: "Minimum Common Value",
+    desc: `
+Problem:
+Given two sorted arrays, return the smallest common element.
+If no common element exists, return -1.
+
+Approach:
+Use Two Pointer technique.
+1. Compare elements of both arrays
+2. Move pointer of smaller element
+3. If equal, return answer
+`,
+    code: `class Solution {
+    public int getCommon(int[] nums1, int[] nums2) {
+        int i = 0, j = 0;
+
+        while (i < nums1.length && j < nums2.length) {
+            if (nums1[i] == nums2[j]) {
+                return nums1[i];
+            }
+
+            if (nums1[i] < nums2[j]) {
+                i++;
+            } else {
+                j++;
+            }
+        }
+
+        return -1;
+    }
+}`
 }
 
 };
