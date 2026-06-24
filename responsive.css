@@ -30,7 +30,19 @@ img {
         margin: 8px;
     }
 }
+@media (max-width: 900px) {
+    .nav-links {
+        flex-direction: column;
+    }
 
+    .nav-btn {
+        display: block;
+        margin: 10px 0;
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
 /* ================= HERO ================= */
 @media (max-width: 900px) {
     .hero {
