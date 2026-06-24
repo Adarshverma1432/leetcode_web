@@ -335,60 +335,23 @@
     background: #22c55e;
     color: black;
 }
-
-        /* //// */
-        /* NAV BUTTON STYLE */
-/* NAVBAR BASE */
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 20px;
-    position: relative;
-}
-
-/* MENU ICON */
-.menu-icon {
-    display: none;
-    font-size: 28px;
-    cursor: pointer;
-}
-
-/* NAV LINKS */
-.nav-links {
-    display: flex;
-}
-
-/* BUTTON STYLE */
-/* NAV BUTTON STYLE */
-.nav-btn {
-    border: 2px solid #38bdf8;
-    border-radius: 20px;
-    padding: 6px 15px;
-    margin-left: 10px;
-    text-decoration: none;
-    color: white;
-    transition: 0.3s;
-}
-
-/* HOVER EFFECT 🔥 */
-.nav-btn:hover {
-    background: #38bdf8;
-    color: black;
-}
-}    </style>
+    </style>
 
 </head>
 
 <body>
 
     <!-- NAVBAR -->
-   <div class="nav-links">
-    <a href="index.html" class="nav-btn">Home</a>
-    <a href="about.html" class="nav-btn">About</a>
-    <a href="topic.html" class="nav-btn">Topic</a>
-    <a href="contact.html" class="nav-btn">Contact</a>
-</div>
+    <div class="navbar">
+        <div class="logo">CodeJourney</div>
+
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="index.html#ques">Problems</a>
+            <a href="contact.html">contact</a>
+        </div>
+    </div>
 
     <!-- HERO -->
     <div class="hero">
@@ -860,57 +823,6 @@
             </a>
             <button class="mark-btn" data-problem="count-odd">Mark as Done ✅</button>
         </div>
-        <!-- Intersection of Two Arrays -->
-<div class="card">
-    <span class="level">Level 28</span>
-    <h3>349. Intersection of Two Arrays</h3>
-
-    <a href="https://leetcode.com/problems/intersection-of-two-arrays/" target="_blank">
-        <button class="code">Practice Problem</button>
-    </a>
-
-    <a href="solution.html?problem=intersection-of-two-arrays">
-        <button class="video">View Solution</button>
-    </a>
-
-    <button class="mark-btn" data-problem="intersection-of-two-arrays">
-        Mark as Done ✅
-    </button>
-</div>
-        <!-- Find the Difference of Two Arrays -->
-<div class="card">
-    <span class="level">Level 29</span>
-    <h3>2215. Find the Difference of Two Arrays</h3>
-
-    <a href="https://leetcode.com/problems/find-the-difference-of-two-arrays/" target="_blank">
-        <button class="code">Practice Problem</button>
-    </a>
-
-    <a href="solution.html?problem=find-the-difference-of-two-arrays">
-        <button class="video">View Solution</button>
-    </a>
-
-    <button class="mark-btn" data-problem="find-the-difference-of-two-arrays">
-        Mark as Done ✅
-    </button>
-</div>
-        <!-- Minimum Common Value -->
-<div class="card">
-    <span class="level">Level 30</span>
-    <h3>2540. Minimum Common Value</h3>
-
-    <a href="https://leetcode.com/problems/minimum-common-value/" target="_blank">
-        <button class="code">Practice Problem</button>
-    </a>
-
-    <a href="solution.html?problem=minimum-common-value">
-        <button class="video">View Solution</button>
-    </a>
-
-    <button class="mark-btn" data-problem="minimum-common-value">
-        Mark as Done ✅
-    </button>
-</div>
 
         <!-- /////////// -->
         <script>
@@ -967,7 +879,6 @@ updateProgress();
                     btn.innerText = "Hide Solution";
                 }
             }
-           
         </script>
 </body>
 
