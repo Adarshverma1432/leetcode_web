@@ -338,6 +338,28 @@
 
         /* //// */
         /* NAV BUTTON STYLE */
+/* NAVBAR BASE */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    position: relative;
+}
+
+/* MENU ICON */
+.menu-icon {
+    display: none;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+/* NAV LINKS */
+.nav-links {
+    display: flex;
+}
+
+/* BUTTON STYLE */
 .nav-btn {
     border: 2px solid #38bdf8;
     border-radius: 20px;
@@ -345,31 +367,55 @@
     margin-left: 10px;
     text-decoration: none;
     color: white;
-    transition: 0.3s;
 }
 
-/* HOVER EFFECT 🔥 */
-.nav-btn:hover {
-    background: #38bdf8;
-    color: black;
-}
-    </style>
+/* ================= MOBILE ================= */
+@media (max-width: 900px) {
+
+    .menu-icon {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: #020617;
+        padding: 20px 0;
+    }
+
+    .nav-links a {
+        margin: 10px auto;
+        width: 80%;
+        text-align: center;
+        padding: 12px;
+    }
+
+    .nav-active {
+        display: flex;
+    }
+}    </style>
 
 </head>
 
 <body>
 
     <!-- NAVBAR -->
-    <div class="navbar">
-        <div class="logo" style="font-size:40px; margin-bottum:20px">CodeJourney!</div>
+   <div class="navbar">
+    <div class="logo">CodeJourney</div>
 
-       <div class="nav-links">
-    <a href="index.html" class="nav-btn">Home</a>
-    <a href="about.html" class="nav-btn">About</a>
-    <a href="topic.html" class="nav-btn">Topic</a>
-    <a href="contact.html" class="nav-btn">Contact</a>
-</div>
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+
+    <div class="nav-links" id="navLinks">
+        <a href="index.html" class="nav-btn">Home</a>
+        <a href="about.html" class="nav-btn">About</a>
+        <a href="topic.html" class="nav-btn">Topic</a>
+        <a href="contact.html" class="nav-btn">Contact</a>
     </div>
+</div>
 
     <!-- HERO -->
     <div class="hero">
@@ -948,6 +994,9 @@ updateProgress();
                     btn.innerText = "Hide Solution";
                 }
             }
+            function toggleMenu() {
+    document.getElementById("navLinks").classList.toggle("nav-active");
+}
         </script>
 </body>
 
