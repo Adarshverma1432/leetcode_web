@@ -1,0 +1,177 @@
+/* ================= GLOBAL ================= */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* ================= NAVBAR ================= */
+@media (max-width: 900px) {
+    .navbar {
+        padding: 15px 20px !important;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .nav-links {
+        margin-top: 10px;
+    }
+
+    .nav-links a {
+        display: inline-block;
+        margin: 8px;
+    }
+}
+
+/* ================= HERO ================= */
+@media (max-width: 900px) {
+    .hero {
+        padding: 40px 15px !important;
+        text-align: center;
+    }
+
+    .hero h1 {
+        font-size: 28px !important;
+    }
+
+    .hero p {
+        font-size: 14px;
+    }
+}
+
+/* ================= SECTION ================= */
+@media (max-width: 600px) {
+    .section {
+        padding: 40px 15px !important;
+    }
+
+    .section h2 {
+        font-size: 22px;
+    }
+
+    .section p {
+        font-size: 14px;
+    }
+}
+
+/* ================= FEATURES (ABOUT PAGE) ================= */
+.features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 900px) {
+    .features {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 20px !important;
+    }
+}
+
+@media (max-width: 600px) {
+    .features {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ================= CARD ================= */
+.card {
+    margin: 10px !important;
+}
+
+@media (max-width: 600px) {
+    .card {
+        padding: 15px !important;
+    }
+
+    .card h3 {
+        font-size: 16px;
+    }
+}
+
+/* ================= TIMELINE ================= */
+@media (max-width: 600px) {
+    .timeline-box {
+        padding-left: 15px;
+    }
+}
+
+/* ================= FORM (CONTACT PAGE) ================= */
+@media (max-width: 600px) {
+    .form-container {
+        padding: 20px !important;
+        margin: 10px;
+    }
+
+    input, textarea {
+        font-size: 14px;
+    }
+
+    .btn {
+        font-size: 14px;
+    }
+}
+
+/* ================= TOPIC PAGE ================= */
+@media (max-width: 900px) {
+    .topic-container {
+        padding: 20px !important;
+    }
+}
+
+/* ================= CONTENT BOX (TOPIC PAGE) ================= */
+@media (max-width: 600px) {
+    .container {
+        padding: 15px !important;
+    }
+
+    .box {
+        padding: 15px !important;
+    }
+}
+
+/* ================= DIAGRAM FIX ================= */
+@media (max-width: 600px) {
+    .diagram {
+        flex-wrap: wrap;
+    }
+
+    .cell {
+        width: 45px !important;
+        height: 45px !important;
+        font-size: 12px;
+    }
+
+    .matrix {
+        grid-template-columns: repeat(3, 45px) !important;
+    }
+}
+
+/* ================= SOLUTION PAGE ================= */
+@media (max-width: 600px) {
+    body {
+        padding: 15px !important;
+    }
+
+    .code-box {
+        padding: 15px !important;
+    }
+
+    pre {
+        font-size: 12px;
+    }
+}
+
+/* ================= BUTTON ================= */
+@media (max-width: 600px) {
+    .btn {
+        width: 100%;
+    }
+}
