@@ -816,7 +816,318 @@ This is a basic math problem.
         return num1 + num2;
     }
 }`
+},const data = {
+
+"first-occurrence": {
+    title: "Find First Occurrence in String",
+    desc: `Return index of first occurrence of needle in haystack.`,
+    code: `class Solution {
+    public int strStr(String haystack, String needle) {
+        return haystack.indexOf(needle);
+    }
+}`
+},
+
+"rotate-string": {
+    title: "Rotate String",
+    desc: `Check if string can be rotated to form goal.`,
+    code: `class Solution {
+    public boolean rotateString(String s, String goal) {
+        return s.length() == goal.length() && (s + s).contains(goal);
+    }
+}`
+},
+
+"kids-candies": {
+    title: "Kids With Greatest Number of Candies",
+    desc: `Check which kids can have max candies after extra candies.`,
+    code: `import java.util.*;
+
+class Solution {
+    public List<Boolean> kidsWithCandies(int[] candies, int extraCandies) {
+        int max = 0;
+        for (int c : candies) max = Math.max(max, c);
+
+        List<Boolean> res = new ArrayList<>();
+
+        for (int c : candies) {
+            res.add(c + extraCandies >= max);
+        }
+
+        return res;
+    }
+}`
+},
+
+"find-difference-389": {
+    title: "Find the Difference",
+    desc: `Find extra character in second string.`,
+    code: `class Solution {
+    public char findTheDifference(String s, String t) {
+        int res = 0;
+
+        for (char c : s.toCharArray()) res ^= c;
+        for (char c : t.toCharArray()) res ^= c;
+
+        return (char) res;
+    }
+}`
+},
+
+"segments": {
+    title: "Number of Segments in a String",
+    desc: `Count words in string.`,
+    code: `class Solution {
+    public int countSegments(String s) {
+        s = s.trim();
+        if (s.isEmpty()) return 0;
+        return s.split("\\\\s+").length;
+    }
+}`
+},
+
+"detect-capital": {
+    title: "Detect Capital",
+    desc: `Check correct capital usage.`,
+    code: `class Solution {
+    public boolean detectCapitalUse(String word) {
+        return word.equals(word.toUpperCase()) ||
+               word.equals(word.toLowerCase()) ||
+               Character.isUpperCase(word.charAt(0)) &&
+               word.substring(1).equals(word.substring(1).toLowerCase());
+    }
+}`
+},
+
+"concat-reverse": {
+    title: "Concatenate Array With Reverse",
+    desc: `Return array + reverse array.`,
+    code: `class Solution {
+    public int[] getConcatenation(int[] nums) {
+        int n = nums.length;
+        int[] res = new int[2 * n];
+
+        for (int i = 0; i < n; i++) {
+            res[i] = nums[i];
+            res[i + n] = nums[n - 1 - i];
+        }
+
+        return res;
+    }
+}`
+},
+
+"min-ops-k": {
+    title: "Minimum Operations to Make Sum Divisible by K",
+    desc: `Make array sum divisible by k.`,
+    code: `class Solution {
+    public int minOperations(int[] nums, int k) {
+        int sum = 0;
+        for (int n : nums) sum += n;
+
+        int rem = sum % k;
+        return rem == 0 ? 0 : rem;
+    }
+}`
+},
+
+"restore-order": {
+    title: "Restore Finishing Order",
+    desc: `Restore original order using mapping.`,
+    code: `class Solution {
+    public int[] restoreOrder(int[] order, int[] index) {
+        int n = order.length;
+        int[] res = new int[n];
+
+        for (int i = 0; i < n; i++) {
+            res[index[i]] = order[i];
+        }
+
+        return res;
+    }
+}`
+},
+
+"truncate-sentence": {
+    title: "Truncate Sentence",
+    desc: `Keep only k words.`,
+    code: `class Solution {
+    public String truncateSentence(String s, int k) {
+        String[] arr = s.split(" ");
+        StringBuilder sb = new StringBuilder();
+
+        for (int i = 0; i < k; i++) {
+            sb.append(arr[i]);
+            if (i < k - 1) sb.append(" ");
+        }
+
+        return sb.toString();
+    }
+}`
+},
+
+"single-number-136": {
+    title: "Single Number",
+    desc: `Find unique element using XOR.`,
+    code: `class Solution {
+    public int singleNumber(int[] nums) {
+        int res = 0;
+
+        for (int n : nums) res ^= n;
+
+        return res;
+    }
+}`
+},
+
+"bits-191": {
+    title: "Number of 1 Bits",
+    desc: `Count set bits.`,
+    code: `class Solution {
+    public int hammingWeight(int n) {
+        int count = 0;
+
+        while (n != 0) {
+            n &= (n - 1);
+            count++;
+        }
+
+        return count;
+    }
+}`
+},
+
+"counting-bits": {
+    title: "Counting Bits",
+    desc: `DP bit counting.`,
+    code: `class Solution {
+    public int[] countBits(int n) {
+        int[] dp = new int[n + 1];
+
+        for (int i = 1; i <= n; i++) {
+            dp[i] = dp[i >> 1] + (i & 1);
+        }
+
+        return dp;
+    }
+}`
+},
+
+"stock-2": {
+    title: "Best Time to Buy and Sell Stock II",
+    desc: `Greedy profit calculation.`,
+    code: `class Solution {
+    public int maxProfit(int[] prices) {
+        int profit = 0;
+
+        for (int i = 1; i < prices.length; i++) {
+            if (prices[i] > prices[i - 1]) {
+                profit += prices[i] - prices[i - 1];
+            }
+        }
+
+        return profit;
+    }
+}`
+},
+
+"pow": {
+    title: "Pow(x, n)",
+    desc: `Fast exponentiation.`,
+    code: `class Solution {
+    public double myPow(double x, int n) {
+        long N = n;
+
+        if (N < 0) {
+            x = 1 / x;
+            N = -N;
+        }
+
+        double res = 1;
+
+        while (N > 0) {
+            if ((N & 1) == 1) res *= x;
+            x *= x;
+            N >>= 1;
+        }
+
+        return res;
+    }
+}`
+},
+
+"remove-duplicate-letters": {
+    title: "Remove Duplicate Letters",
+    desc: `Stack + greedy approach.`,
+    code: `class Solution {
+    public String removeDuplicateLetters(String s) {
+        int[] freq = new int[26];
+        boolean[] seen = new boolean[26];
+
+        for (char c : s.toCharArray()) freq[c - 'a']++;
+
+        StringBuilder sb = new StringBuilder();
+
+        for (char c : s.toCharArray()) {
+            freq[c - 'a']--;
+
+            if (seen[c - 'a']) continue;
+
+            while (sb.length() > 0 &&
+                   sb.charAt(sb.length() - 1) > c &&
+                   freq[sb.charAt(sb.length() - 1) - 'a'] > 0) {
+                seen[sb.charAt(sb.length() - 1) - 'a'] = false;
+                sb.deleteCharAt(sb.length() - 1);
+            }
+
+            sb.append(c);
+            seen[c - 'a'] = true;
+        }
+
+        return sb.toString();
+    }
+}`
+},
+
+"delete-node": {
+    title: "Delete Node in Linked List",
+    desc: `Delete node without head.`,
+    code: `class Solution {
+    public void deleteNode(ListNode node) {
+        node.val = node.next.val;
+        node.next = node.next.next;
+    }
+}`
+},
+
+"middle-linked-list": {
+    title: "Middle of Linked List",
+    desc: `Fast and slow pointer.`,
+    code: `class Solution {
+    public ListNode middleNode(ListNode head) {
+        ListNode slow = head, fast = head;
+
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+
+        return slow;
+    }
+}`
+},
+
+"add-two-integers": {
+    title: "Add Two Integers",
+    desc: `Return sum of two integers.`,
+    code: `class Solution {
+    public int sum(int num1, int num2) {
+        return num1 + num2;
+    }
+}`
 }
+
+};
 
 };
 
