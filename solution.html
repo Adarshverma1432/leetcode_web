@@ -801,23 +801,38 @@ Use Two Pointer technique.
         return -1;
     }
 }`
-},"add-two-integers": {
-    title: "2235. Add Two Integers",
+},"number-complement": {
+    title: "Number Complement",
     desc: `
 Problem:
-Given two integers num1 and num2, return their sum.
+Find the complement of a number.
+
+Example:
+Input: 5 → 101
+Output: 2 → 010
 
 Approach:
-Directly return num1 + num2.
-This is a basic math problem.
+1. Convert number to binary
+2. Flip all bits (0 → 1, 1 → 0)
+3. Convert back to decimal
     `,
     code: `class Solution {
-    public int sum(int num1, int num2) {
-        return num1 + num2;
+    public int findComplement(int num) {
+
+        int mask = 0;
+        int temp = num;
+
+        // create mask like 1111...
+        while (temp > 0) {
+            mask = (mask << 1) | 1;
+            temp >>= 1;
+        }
+
+        // flip bits using XOR
+        return num ^ mask;
     }
 }`
 },
-
 "first-occurrence": {
     title: "Find First Occurrence in String",
     desc: `Return index of first occurrence of needle in haystack.`,
